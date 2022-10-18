@@ -562,6 +562,10 @@ services:
     container_name: aaprocessor
     build: ./autoagora-processor
     restart: unless-stopped
+    depends_on:
+      - postgres
+      - rabbitmq
+      - indexer-service
     environment:
       - GRAPH_POSTGRES_HOST=${DB_HOST:-postgres}
       - GRAPH_POSTGRES_DATABASE=${GRAPH_NODE_DB_NAME:-graph-node}
