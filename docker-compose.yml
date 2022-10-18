@@ -578,8 +578,7 @@ services:
       - POSTGRES_HOST=postgres
       - POSTGRES_DATABASE=${GRAPH_NODE_DB_NAME:-graph-node}
       - POSTGRES_USERNAME=${DB_USER:-graph-node}
-      - POSTGRES_PASSWORD=${DB_PASS:-db-password}
-      
+      - POSTGRES_PASSWORD=${DB_PASS:-db-password}      
     networks:
       - monitor-net
     labels:
