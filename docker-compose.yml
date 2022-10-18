@@ -538,17 +538,17 @@ services:
 #####################             RABBITMQ CONTAINER           #######################
 ######################################################################################
 
-   rabbitmq3:
-      container_name: "rabbitmq"
-      image: rabbitmq:latest
-      environment:
-        - RABBITMQ_DEFAULT_USER=myuser
-        - RABBITMQ_DEFAULT_PASS=mypassword
+  rabbitmq3:
+    container_name: rabbitmq
+    image: rabbitmq:latest
+    environment:
+      - RABBITMQ_DEFAULT_USER=myuser
+      - RABBITMQ_DEFAULT_PASS=mypassword
       #ports:
         # AMQP protocol port
         #- '5672:5672'
         # HTTP management UI
         #- '15672:15672'
-      expose:
-        - 5672
-        - 15672
+    expose:
+      - 5672
+      - 15672
