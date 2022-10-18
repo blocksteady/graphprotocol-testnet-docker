@@ -55,6 +55,7 @@ services:
       - query-node-0
       - indexer-agent
       - postgres2
+      - rabbitmq
       #- vector-node
     environment:
       INDEXER_SERVICE_MNEMONIC: ${OPERATOR_SEED_PHRASE}
@@ -538,7 +539,7 @@ services:
 #####################             RABBITMQ CONTAINER           #######################
 ######################################################################################
 
-  rabbitmq3:
+  rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:latest
     restart: unless-stopped
