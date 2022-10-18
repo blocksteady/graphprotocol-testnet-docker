@@ -44,11 +44,11 @@ services:
 
 
 ######################################################################################
-#####################         INDEXER SERVICE CONTAINER        #######################
+#####################        AUTOAGORA INDEXER SERVICE CONTAINER        ##############
 ######################################################################################
 
   indexer-service:
-    image: ${INDEXER_SERVICE_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.3}
+    build: ./autoagora-indexer-service
     container_name: indexer-service
     depends_on:
       - index-node-0
@@ -530,3 +530,4 @@ services:
     labels:
       org.label-schema.group: "monitoring"
     logging: *default-logging
+
