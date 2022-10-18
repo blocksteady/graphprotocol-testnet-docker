@@ -571,7 +571,7 @@ services:
       - GRAPH_POSTGRES_DATABASE=${GRAPH_NODE_DB_NAME:-graph-node}
       - GRAPH_POSTGRES_USERNAME=${DB_USER:-graph-node}
       - GRAPH_POSTGRES_PASSWORD=${DB_PASS:-db-password}
-      - GRAPH_NODE_QUERY_ENDPOINT=${QUERY_HOST}
+      - GRAPH_NODE_QUERY_ENDPOINT=https://${QUERY_HOST}
       - RABBITMQ_HOST=rabbitmq
       - RABBITMQ_USERNAME=${RABBITMQ_USER:-rabbitmquser}
       - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD:-rabbitmqpassword}
