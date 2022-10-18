@@ -584,3 +584,29 @@ services:
     labels:
       org.label-schema.group: "monitoring"
     logging: *default-logging
+
+######################################################################################
+#####################            AUTOAGORA CONTAINER           #######################
+######################################################################################
+
+  autoagora:
+    container_name: autoagora
+    build: ./autoagora
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - rabbitmq
+      - indexer-service
+      - aaprocessor
+    environment:
+      - INDEXER_AGENT_MGMT_ENDPOINT=${INDEX_HOST}
+      - INDEXER_SERVICE_METRICS_ENDPOINT=${PROMETHEUS_HOST}
+      - LOGS_POSTGRES_HOST=postgres
+      - LOGS_POSTGRES_DATABASE=${GRAPH_NODE_DB_NAME:-graph-node}
+      - LOGS_POSTGRES_USERNAME=${DB_USER:-graph-node}
+      - LOGS_POSTGRES_PASSWORD=${DB_PASS:-db-password}         
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    logging: *default-logging
