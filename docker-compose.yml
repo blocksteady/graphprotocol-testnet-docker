@@ -571,7 +571,7 @@ services:
       - RABBITMQ_HOST=rabbitmq
       - RABBITMQ_USERNAME=${RABBITMQ_USER:-rabbitmquser}
       - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD:-rabbitmqpassword}
-      - POSTGRES_HOST=postgres2
+      - POSTGRES_HOST=postgres
       - POSTGRES_DATABASE=${GRAPH_NODE_DB_NAME:-graph-node}
       - POSTGRES_USERNAME=${DB_USER:-graph-node}
       - POSTGRES_PASSWORD=${DB_PASS:-db-password}
