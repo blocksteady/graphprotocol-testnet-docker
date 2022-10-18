@@ -64,7 +64,7 @@ services:
       INDEXER_SERVICE_ETHEREUM: ${TXN_RPC}
       INDEXER_SERVICE_GRAPH_NODE_QUERY_ENDPOINT: http://query-node-0:8000
       INDEXER_SERVICE_GRAPH_NODE_STATUS_ENDPOINT: http://index-node-0:8030/graphql
-      INDEXER_SERVICE_NETWORK_SUBGRAPH_ENDPOINT: ${INDEXER_SERVICE_NETWORK_SUBGRAPH_ENDPOINT:-https://gateway.testnet.thegraph.com/network}
+      INDEXER_SERVICE_NETWORK_SUBGRAPH_ENDPOINT: ${INDEXER_SERVICE_NETWORK_SUBGRAPH_ENDPOINT:-https://api.thegraph.com/subgraphs/name/graphprotocol/graph-network-goerli}
       INDEXER_SERVICE_NETWORK_SUBGRAPH_DEPLOYMENT: ${NETWORK_SUBGRAPH_DEPLOYMENT}
       INDEXER_SERVICE_POSTGRES_HOST: postgres2
       INDEXER_SERVICE_POSTGRES_USERNAME: ${DB_USER:-graph-node}
@@ -126,7 +126,7 @@ services:
       INDEXER_AGENT_GRAPH_NODE_ADMIN_ENDPOINT: http://index-node-0:8020
       INDEXER_AGENT_PUBLIC_INDEXER_URL: 'https://${INDEX_HOST}/'
       INDEXER_AGENT_INDEXER_GEO_COORDINATES: ${GEO_COORDINATES:-60.16952 24.93545}
-      INDEXER_AGENT_NETWORK_SUBGRAPH_ENDPOINT: ${INDEXER_AGENT_NETWORK_SUBGRAPH_ENDPOINT:-https://gateway.testnet.thegraph.com/network}
+      INDEXER_AGENT_NETWORK_SUBGRAPH_ENDPOINT: ${INDEXER_AGENT_NETWORK_SUBGRAPH_ENDPOINT:-https://api.thegraph.com/subgraphs/name/graphprotocol/graph-network-goerli}
       INDEXER_AGENT_NETWORK_SUBGRAPH_DEPLOYMENT: ${NETWORK_SUBGRAPH_DEPLOYMENT}
       INDEXER_AGENT_POSTGRES_HOST: ${AGENT_DB_HOST:-postgres2}
       INDEXER_AGENT_POSTGRES_USERNAME: ${DB_USER:-graph-node}
@@ -504,7 +504,7 @@ services:
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=${GRAFANA_HOST}
       - GF_INSTALL_PLUGINS=fifemon-graphql-datasource
-      - subgraph_endpoint=${SUBGRAPH_ENDPOINT:-https://gateway.testnet.thegraph.com/network}
+      - subgraph_endpoint=${SUBGRAPH_ENDPOINT:-https://api.thegraph.com/subgraphs/name/graphprotocol/graph-network-goerli}
     restart: unless-stopped
     expose:
       - 3000
@@ -541,6 +541,7 @@ services:
   rabbitmq3:
     container_name: rabbitmq
     image: rabbitmq:latest
+    restart: unless-stopped
     environment:
       - RABBITMQ_DEFAULT_USER=myuser
       - RABBITMQ_DEFAULT_PASS=mypassword
@@ -552,3 +553,8 @@ services:
     expose:
       - 5672
       - 15672
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    logging: *default-logging
