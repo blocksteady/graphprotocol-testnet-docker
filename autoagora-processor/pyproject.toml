@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "autoagora-processor"
+version = "0.2.0"
+authors = [
+    "Alexis Asseman <alexis@semiotic.ai>"
+]
+description = ""
+license = ""
+classifiers = [
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: Apache Software License"
+]
+
+[tool.poetry.scripts]
+autoagora-processor = "autoagora_processor.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+gql = {extras = ["requests"], version = "^3.1.0"}
+pika = "^1.2.0"
+psycopg2-binary = "^2.9.3"
+ConfigArgParse = "^1.5.3"
+prometheus-client = "^0.14.1"
+thegraph-gql-utils = "^1.2.0"
+
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry_core>=1.1.0",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
