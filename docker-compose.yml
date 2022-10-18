@@ -83,6 +83,9 @@ services:
       VIRTUAL_HOST: ${INDEX_HOST}
       VIRTUAL_PORT: 7600
       LETSENCRYPT_HOST: ${INDEX_HOST}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PASSWORD: mypassword
+      RABBITMQ_USERNAME: myuser
     expose:
       - 7300
       - 7600
@@ -548,3 +551,6 @@ services:
             - '5672:5672'
             # HTTP management UI
             - '15672:15672'
+        expose:
+            - 5672
+            - 15672
