@@ -101,7 +101,7 @@ services:
 ######################################################################################
 
   indexer-agent:
-    image: ${INDEXER_AGENT_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.3}
+    image: ${INDEXER_AGENT_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.4}
     container_name: indexer-agent
     depends_on:
       - index-node-0
@@ -153,7 +153,7 @@ services:
 
 
   index-node-0:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.27.0}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.28.0}
     container_name: index-node-0
     depends_on:
       - postgres
@@ -206,7 +206,7 @@ services:
 
 
   query-node-0:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.27.0}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.28.0}
     container_name: query-node-0
     depends_on:
       - postgres
@@ -540,6 +540,9 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER:-rabbitmquser}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-rabbitmqpassword}
+      - VIRTUAL_HOST=${RABBITMQ_HOST}
+      - VIRTUAL_PORT=15672
+      - LETSENCRYPT_HOST=${RABBITMQ_HOST}
       #ports:
         # AMQP protocol port
         #- '5672:5672'
