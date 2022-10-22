@@ -607,7 +607,8 @@ services:
       - LOGS_POSTGRES_HOST=postgres
       - LOGS_POSTGRES_DATABASE=${GRAPH_NODE_DB_NAME:-graph-node}
       - LOGS_POSTGRES_USERNAME=${DB_USER:-graph-node}
-      - LOGS_POSTGRES_PASSWORD=${DB_PASS:-db-password}         
+      - LOGS_POSTGRES_PASSWORD=${DB_PASS:-db-password}
+      - EXPERIMENTAL_MODEL_BUILDER=${AA_EXPERIMENTAL_MODEL_BUILDER:-FALSE}
     expose:
       - 8000
     networks:
