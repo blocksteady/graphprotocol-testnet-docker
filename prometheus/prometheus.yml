@@ -63,6 +63,11 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['grafana:3000']
+      
+  - job_name: 'autoagora'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['autoagora:8000']
 
 alerting:
   alertmanagers:
