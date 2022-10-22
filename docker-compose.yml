@@ -540,9 +540,9 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER:-rabbitmquser}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-rabbitmqpassword}
-      - VIRTUAL_HOST=${RABBITMQ_HOST}
-      - VIRTUAL_PORT=15672
-      - LETSENCRYPT_HOST=${RABBITMQ_HOST}
+      #- VIRTUAL_HOST=${RABBITMQ_HOST}
+      #- VIRTUAL_PORT=15672
+      #- LETSENCRYPT_HOST=${RABBITMQ_HOST}
       #ports:
         # AMQP protocol port
         #- '5672:5672'
