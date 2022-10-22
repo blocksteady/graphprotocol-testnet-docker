@@ -608,6 +608,8 @@ services:
       - LOGS_POSTGRES_DATABASE=${GRAPH_NODE_DB_NAME:-graph-node}
       - LOGS_POSTGRES_USERNAME=${DB_USER:-graph-node}
       - LOGS_POSTGRES_PASSWORD=${DB_PASS:-db-password}         
+    expose:
+      - 8000
     networks:
       - monitor-net
     labels:
