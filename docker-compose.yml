@@ -172,6 +172,8 @@ services:
       node_id: index_node_0
       CHAIN_0_NAME: ${CHAIN_0_NAME}
       CHAIN_0_RPC: ${CHAIN_0_RPC}
+      CHAIN_1_NAME: ${CHAIN_1_NAME}
+      CHAIN_1_RPC: ${CHAIN_1_RPC}
       BLOCK_INGESTOR: index_node_0
       RUST_LOG: INFO
       GRAPH_LOG: ${GRAPHNODE_LOGLEVEL:-DEBUG}
