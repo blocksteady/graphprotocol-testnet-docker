@@ -606,7 +606,7 @@ services:
       - aaprocessor
     environment:
       - INDEXER_AGENT_MGMT_ENDPOINT=http://indexer-agent:8000
-      - INDEXER_SERVICE_METRICS_ENDPOINT=http://indexer-service:7300
+      - INDEXER_SERVICE_METRICS_ENDPOINT=http://indexer-service:7300/metrics
       - LOGS_POSTGRES_HOST=postgres
       - LOGS_POSTGRES_DATABASE=${GRAPH_NODE_DB_NAME:-graph-node}
       - LOGS_POSTGRES_USERNAME=${DB_USER:-graph-node}
